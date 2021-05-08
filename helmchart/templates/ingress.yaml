@@ -1,0 +1,23 @@
+{{- if .Values.ingress.enabled -}}
+{{- $serviceName := include "application.name" . -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ template "application.fullname" . }}
+  labels:
+    app: {{ template "application.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /test-backend
+        pathType: "Prefix"
+        backend:
+          service:
+            name: {{ $serviceName }}
+            port:
+              number: 8080
+  {{- end }}

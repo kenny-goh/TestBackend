@@ -1,0 +1,37 @@
+application:
+  name: test-backend
+ingress:
+  enabled: true
+
+container:
+  replicaCount: 1
+  imagePrefix: ""
+  imagePullPolicy: Never
+  health:
+    liveness:
+      enabled: false
+      initDelay: 30
+      path: /test-backend
+      timeout: 10
+      period: 5
+      successThreshold: 1
+      failureThreshold: 20
+    readiness:
+      enabled: false
+      initDelay: 30
+      path: /test-backend
+      timeout: 10
+      period: 5
+      successThreshold: 1
+      failureThreshold: 20
+    minReadySeconds: 5
+    preStopCommand:
+      - sleep
+      - 5
+resources:
+  limits:
+    memory: 320Mi
+    cpu: 1.0
+  requests:
+    memory: 320Mi
+    cpu: 0.05
