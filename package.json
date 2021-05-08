@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha"
+    "unittest": "mocha ./test/unit",
+    "test": "mocha ./test/*"
   },
   "dependencies": {
     "chai": "^4.3.4",
