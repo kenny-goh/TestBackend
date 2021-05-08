@@ -2,7 +2,9 @@
   "name": "test-backend",
   "version": "0.0.0",
   "private": true,
+
   "scripts": {
+    "prepare": "husky install",
     "start": "node ./bin/www",
     "unittest": "mocha ./test/unit",
     "test": "mocha ./test/*",
