@@ -18,5 +18,8 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-self-compare': 'warn',
     'mocha/no-mocha-arrows': 'warn',
+    'no-restricted-syntax': 'warn',
+    'guard-for-in': 'warn',
+    'arrow-body-style': 'warn',
   },
 };

@@ -3,5 +3,6 @@
 
 # Format code
 npx prettier --write .
+
 # Run lint
 npx lint-staged
