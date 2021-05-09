@@ -3,6 +3,8 @@ application:
 ingress:
   enabled: true
 
+appVersion: 0.1
+
 container:
   replicaCount: 1
   imagePrefix: ""

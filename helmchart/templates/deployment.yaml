@@ -4,6 +4,7 @@ metadata:
   name: {{ template "application.fullname" . }}
   labels:
     app: {{ template "application.name" . }}
+    appVersion: {{ .Values.appVersion | quote }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -23,7 +24,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ .Values.container.imagePrefix }}{{ template "application.name" . }}:{{ .Chart.Version }}
+          image: {{ .Values.container.imagePrefix }}{{ template "application.name" . }}:{{ .Values.appVersion }}
           imagePullPolicy: {{ .Values.container.imagePullPolicy }}
           ports:
             - containerPort: 3000

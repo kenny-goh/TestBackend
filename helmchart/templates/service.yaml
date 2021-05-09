@@ -5,6 +5,7 @@ metadata:
   labels:
     app: {{ template "application.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    appVersion: {{ .Values.appVersion | quote }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
