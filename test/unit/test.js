@@ -1,7 +1,7 @@
 // This is just for organisation and reporting
-describe('Our application', () => {
+describe("Our application", () => {
   // This is the name of the test
-  it('placeholder test', (done) => {
+  it("placeholder test", (done) => {
     // We want this test to pass.
     if (5 === 5) {
       // If the behavior is as expected, call done with no argument.
