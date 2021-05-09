@@ -1,3 +1,3 @@
 module.exports = {
-    "*": ["npm run lint:js","npm unittest"],
+  "src/**/*.js": ["npm run lint:js", "npm test"],
 };

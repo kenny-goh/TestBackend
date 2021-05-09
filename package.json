@@ -21,13 +21,20 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-mocha": "^8.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-security": "^1.4.0",
     "husky": "^6.0.0",
-    "lint-staged": "^11.0.0"
+    "lint-staged": "^11.0.0",
+    "prettier": "2.2.1"
   },
   "lint-staged": {
     "src/**/*.js": [
-      "npm run lint:js",
-      "npm unittest"
+      "npm run lint:js:fix",
+      "npm run unittest"
     ]
   }
 }
