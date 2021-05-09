@@ -21,5 +21,6 @@ module.exports = {
     'no-restricted-syntax': 'warn',
     'guard-for-in': 'warn',
     'arrow-body-style': 'warn',
+    'node/no-unpublished-require': 'off',
   },
 };

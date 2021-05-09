@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+var db = require('../src/models/db');
 var app = require('../src/app');
 var debug = require('debug')('test-backend:server');
 var http = require('http');
