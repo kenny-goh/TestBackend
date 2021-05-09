@@ -1,5 +1,6 @@
 const { expect } = require('chai');
-const dbHandler = require('./db-handler');
+const mongoose = require('mongoose');
+const { MongoMemoryServer } = require('mongodb-memory-server');
 const productService = require('../../src/services/product');
 
 const productComplete = {
@@ -10,14 +11,18 @@ const productComplete = {
 };
 
 describe('product services', () => {
+  let mongoServer;
+  const opts = { useNewUrlParser: true, useUnifiedTopology: true };
+
   before(async () => {
-    return dbHandler.connect();
+    mongoServer = new MongoMemoryServer();
+    const mongoUri = await mongoServer.getUri('test');
+    await mongoose.connect(mongoUri, opts);
   });
+
   after(async () => {
-    return dbHandler.closeDatabase();
-  });
-  afterEach(async () => {
-    return dbHandler.clearDatabase();
+    await mongoose.disconnect();
+    await mongoServer.stop();
   });
 
   it('products can be created correctly', async () => {
