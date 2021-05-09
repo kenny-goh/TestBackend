@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --jobs 1 ./test/**/*.js",
+    "test": "mocha ./test/**/*-test.js",
     "lint:js": "eslint . --ext .js",
     "lint:js:fix": "npm run lint:js -- --fix",
     "prepare": "husky install"
@@ -35,8 +35,7 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "npm run lint:js",
-      "npm test"
+      "npm run lint:js"
     ]
   }
 }

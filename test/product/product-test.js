@@ -13,7 +13,6 @@ const productComplete = {
 describe('product services', () => {
   let mongoServer;
   const opts = { useNewUrlParser: true, useUnifiedTopology: true };
-
   before(async () => {
     mongoServer = new MongoMemoryServer();
     const mongoUri = await mongoServer.getUri('test');
@@ -24,11 +23,9 @@ describe('product services', () => {
     await mongoose.disconnect();
     await mongoServer.stop();
   });
-
   it('products can be created correctly', async () => {
     expect(async () => productService.create(productComplete)).not.to.throw();
   });
-
   it('products can be retrieved correctly', async () => {
     await productService.create(productComplete);
     const result = await productService.all();

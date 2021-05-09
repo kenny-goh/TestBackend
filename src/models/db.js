@@ -3,7 +3,11 @@ const { MongoMemoryServer } = require('mongodb-memory-server');
 const config = require('../config');
 
 async function connect() {
-  const uri = config.db.url;
+  let uri = config.db.url;
+  if (config.environment === 'dev') {
+    const mongod = new MongoMemoryServer();
+    uri = await mongod.getUri();
+  }
   const mongooseOpts = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -11,5 +15,4 @@ async function connect() {
   await mongoose.connect(uri, mongooseOpts);
 }
 connect();
-
 module.exports = mongoose.connection;

@@ -4,5 +4,9 @@
 # Format code
 npx prettier --write .
 
+sleep 0.5
+
 # Run lint
 npx lint-staged
+
+npm test
