@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const actuator = require('express-actuator');
 const indexRouter = require('./routes');
 const apiRouter = require('./routes/api');
 
@@ -17,6 +18,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const options = {
+  basePath: '/management', // It will set /management/info instead of /info
+  infoGitMode: 'simple', // the amount of git information you want to expose, 'simple' or 'full',
+};
+app.use(actuator(options));
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);

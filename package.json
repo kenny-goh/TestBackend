@@ -14,6 +14,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-actuator": "^1.7.0",
     "http-errors": "~1.6.3",
     "mocha": "^8.4.0",
     "mongodb-memory-server": "^6.9.6",
@@ -36,8 +37,7 @@
   },
   "lint-staged": {
     "src/**/*.js": [
-      "npm run lint:js",
-      "git add"
+      "npm run lint:js"
     ]
   }
 }
