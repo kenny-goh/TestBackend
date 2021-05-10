@@ -1,8 +1,10 @@
 todo
+
 - makefile
 - acceptance test
 
 nice-to-have
+
 - reactive js
 - admin view
 
