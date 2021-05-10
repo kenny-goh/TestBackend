@@ -5,7 +5,7 @@ const config = require('../config');
 async function connect() {
   let uri = config.db.url;
   if (config.environment === 'dev') {
-    const mongod = new MongoMemoryServer();
+    const mongod = new MongoMemoryServer({ debug: true });
     uri = await mongod.getUri();
   }
   const mongooseOpts = {

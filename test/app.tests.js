@@ -7,7 +7,7 @@ describe('GET /', () => {
   let mongoServer;
   const opts = { useNewUrlParser: true, useUnifiedTopology: true };
   before(async () => {
-    mongoServer = new MongoMemoryServer();
+    mongoServer = new MongoMemoryServer({ debug: true });
     const mongoUri = await mongoServer.getUri('test');
     await mongoose.connect(mongoUri, opts);
   });

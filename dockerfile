@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM jtbaird/alpine-node-mongo:latest
 WORKDIR /app
 COPY . .
 RUN echo "Installing dependencies"

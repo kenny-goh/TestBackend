@@ -10,4 +10,8 @@ module.exports.create = async (product) => {
   await productModel.create(product);
 };
 
+/**
+ * Fetch all products
+ * @returns {Promise<Array<Document>>}
+ */
 module.exports.all = async () => productModel.find({}).exec();
