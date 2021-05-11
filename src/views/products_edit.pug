@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    h3 Edit product
+    ul.errors
+        if errors
+            each error in errors
+                li.alert #{error.msg}
+
+    form(action="/products/update" method="post")
+        input(hidden, type="text", name="id", value=`${product ? product.id : ''}`, id="id")
+        table.table
+            tr
+                td
+                    label(for='name') Name:
+                td
+                    input(type="text", name="name", value=`${product ? product.name : ''}`, id="name")
+            tr
+                td
+                    label(for='description') Description:
+                td
+                    input(type="text", name="description", value=`${product ? product.description : ''}`, id="description")
+            tr
+                td
+                    label(for='price') Price:
+                td
+                    input(type="text", name="price", value=`${product ? product.price : ''}`, placeholder="0.00", id="price")
+            tr
+                td
+                    input(type="submit" value="Update" style="margin:5px")
+                    a(href="/products")
+                        button(type="button") Cancel

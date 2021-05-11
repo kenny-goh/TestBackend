@@ -1,0 +1,30 @@
+extends layout
+
+
+
+block content
+    h3 Products
+    table.table(border='1', style='border-collapse: collapse')
+      tr
+        th(width='100px') Name
+        th(width='100px') Price
+        th(width='200px') Description
+        th(width='150px')
+
+      each prod in products
+        tr
+          td=prod.name
+          td=prod.price
+          td=prod.description
+          td
+            table
+                tr
+                    td
+                        form(method='POST' action=`/products/edit/${prod.id}?`)
+                            input.button(type='submit' value='Edit')
+                    td
+                        form(method='POST' action=`/products/delete/${prod.id}?`)
+                            input.button(type='submit' value='Delete')
+    br
+    a(href="/products/add")
+     button(type="button") Add new product

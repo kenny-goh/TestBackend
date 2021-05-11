@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const actuator = require('express-actuator');
 const indexRouter = require('./routes');
+const productsRouter = require('./routes/products');
 const apiRouter = require('./routes/api');
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(actuator(options));
 
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+app.use('/products', productsRouter);
 
 // catch 404 and forward to error handler.
 app.use((req, res, next) => {
