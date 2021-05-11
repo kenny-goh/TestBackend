@@ -4,13 +4,13 @@ const productModel = require('../models/product');
 module.exports.update = async (product) => {
   await productModel.updateOne(
     { _id: new mongo.ObjectID(product.id) },
-    { $set: product },
+    { $set: product }
   );
 };
 
 module.exports.create = async (product) => {
   if (!product) throw new Error('Missing product');
-  await productModel.create(product);
+  return productModel.create(product);
 };
 
 module.exports.findProductById = async (id) => productModel.findById(new mongo.ObjectId(id));

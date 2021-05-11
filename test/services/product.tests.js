@@ -37,7 +37,21 @@ describe('product services', () => {
     expect(async () => productService.create(productComplete)).not.to.throw();
   });
 
-  it('products can be retrieved correctly', async () => {
+  it('products can be updated correctly', async () => {
+    const product = await productService.create(productComplete);
+    product.price = 799;
+    await productService.update(product);
+    const result = await productService.findProductById(product.id);
+    expect(result.price).eq(799);
+  });
+
+  it('products can be updated', async () => {
+    const product = await productService.create(productComplete);
+    const result = await productService.findProductById(product.id);
+    expect(result).not.null;
+  });
+
+  it('products can be retrieved ', async () => {
     await productService.create(productComplete);
     const result = await productService.all();
     expect(result).length.above(0);

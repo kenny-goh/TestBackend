@@ -22,6 +22,7 @@ module.exports = {
     'guard-for-in': 'warn',
     'arrow-body-style': 'warn',
     'comma-dangle': 'warn',
+    'no-unused-expressions': 'warn',
     'node/no-unpublished-require': 'off',
     'object-curly-newline': 'off',
   },

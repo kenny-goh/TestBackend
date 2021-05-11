@@ -44,7 +44,7 @@ router.post(
         errors: errors.errors,
       });
     }
-  },
+  }
 );
 
 router.post(
@@ -72,7 +72,7 @@ router.post(
         errors: errors.errors,
       });
     }
-  },
+  }
 );
 
 router.post('/delete/:id', async (req, res) => {

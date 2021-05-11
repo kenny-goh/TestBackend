@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const actuator = require('express-actuator');
+const mongoose = require('mongoose');
 const indexRouter = require('./routes');
 const productsRouter = require('./routes/products');
 const apiRouter = require('./routes/api');
@@ -23,6 +24,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 const options = {
   basePath: '/management', // It will set /management/info instead of /info
   infoGitMode: 'simple', // the amount of git information you want to expose, 'simple' or 'full',
+  customEndpoints: [
+    {
+      id: 'dependencies',
+      controller: (req, res) => {
+        const readyStateMapping = {
+          0: 'disconnected',
+          1: 'connected',
+          2: 'connecting',
+          3: 'disconnected',
+        };
+        res.send({
+          mongooseDb: {
+            readyState: readyStateMapping[mongoose.connection.readyState],
+          },
+        });
+      },
+    },
+  ],
 };
 app.use(actuator(options));
 
