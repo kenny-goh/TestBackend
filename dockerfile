@@ -4,6 +4,5 @@ COPY . .
 arg ENVIRONMENT
 ENV ENVIRONMENT=$ENVIRONMENT
 RUN echo "Installing dependencies"
-RUN npm install
-RUN npm test
+RUN npm install || npm test
 CMD ["npm", "start"]

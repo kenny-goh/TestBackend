@@ -25,7 +25,9 @@ describe('product services', () => {
     });
   });
 
-  afterEach(() => { return mockMongoose.helper.reset(); });
+  afterEach(() => {
+    return mockMongoose.helper.reset();
+  });
 
   after(() => {
     mongoose.disconnect();
