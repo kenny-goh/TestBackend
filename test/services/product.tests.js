@@ -1,7 +1,12 @@
 const { expect } = require('chai');
+const { MockMongoose } = require('mock-mongoose');
 const mongoose = require('mongoose');
-const { MongoMemoryServer } = require('mongodb-memory-server');
+
+const mockMongoose = new MockMongoose(mongoose);
 const productService = require('../../src/services/product');
+const config = require('../../src/config');
+
+if (config.environment !== 'dev') return;
 
 const productComplete = {
   name: 'iPhone 11',
@@ -11,18 +16,21 @@ const productComplete = {
 };
 
 describe('product services', () => {
-  let mongoServer;
-  const opts = { useNewUrlParser: true, useUnifiedTopology: true };
-  before(async () => {
-    mongoServer = new MongoMemoryServer({ debug: true });
-    const mongoUri = await mongoServer.getUri('test');
-    await mongoose.connect(mongoUri, opts);
+  before(() => {
+    const opts = { useNewUrlParser: true, useUnifiedTopology: true };
+    mockMongoose.prepareStorage().then(() => {
+      mongoose.connect('mongodb://example.com/TestingDB', opts, (err) => {
+        console.error(err.message, err.stack);
+      });
+    });
   });
 
-  after(async () => {
-    await mongoose.disconnect();
-    await mongoServer.stop();
+  afterEach(() => { return mockMongoose.helper.reset(); });
+
+  after(() => {
+    mongoose.disconnect();
   });
+
   it('products can be created correctly', async () => {
     expect(async () => productService.create(productComplete)).not.to.throw();
   });

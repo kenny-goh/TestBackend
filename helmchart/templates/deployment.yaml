@@ -31,6 +31,11 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ template "application.fullname" . }}
+          env:
+            - name: ENVIRONMENT
+              value: stage
+            - name: DATABASE_URL
+              value: mongodb://root:ABJtTUgVio@my-release-mongodb.default.svc.cluster.local:27017
           lifecycle:
             preStop:
               exec:

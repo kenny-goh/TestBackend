@@ -1,8 +1,9 @@
-FROM jtbaird/alpine-node-mongo:latest
+FROM node:16-alpine
 WORKDIR /app
 COPY . .
+arg ENVIRONMENT
+ENV ENVIRONMENT=$ENVIRONMENT
 RUN echo "Installing dependencies"
 RUN npm install
-run echo "Running tests"
 RUN npm test
 CMD ["npm", "start"]

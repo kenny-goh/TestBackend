@@ -1,8 +1,8 @@
 const config = {
   // dev, stage, prod
-  environment: process.env.environment || 'dev',
+  environment: process.env.ENVIRONMENT || 'dev',
   db: {
-    url: process.env.DATABASE_URL,
+    url: process.env.DATABASE_URL || 'mongodb://localhost:27017',
   },
 };
 
