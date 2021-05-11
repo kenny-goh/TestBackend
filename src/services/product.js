@@ -4,7 +4,7 @@ const productModel = require('../models/product');
 module.exports.update = async (product) => {
   await productModel.updateOne(
     { _id: new mongo.ObjectID(product.id) },
-    { $set: product }
+    { $set: product },
   );
 };
 

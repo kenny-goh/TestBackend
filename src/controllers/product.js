@@ -2,7 +2,7 @@ const productService = require('../services/product');
 
 const productController = {
   async all(req, res) {
-    const products = productService.all();
+    const products = await productService.all();
     return res.json(products);
   },
   create(req, res) {
