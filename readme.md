@@ -1,5 +1,6 @@
 todo
 
+- include export CYPRESS_BASE_URL=http://xxx in acceptance script
 - makefile
 - acceptance test
 

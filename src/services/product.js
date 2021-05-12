@@ -13,7 +13,8 @@ module.exports.create = async (product) => {
   return productModel.create(product);
 };
 
-module.exports.findProductById = async (id) => productModel.findById(new mongo.ObjectId(id));
+module.exports.findProductById = async (id) =>
+  productModel.findById(new mongo.ObjectId(id));
 
 module.exports.all = async () => productModel.find({}).exec();
 

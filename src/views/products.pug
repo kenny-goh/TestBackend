@@ -4,8 +4,8 @@ extends layout
 
 block content
     h3 Products
-    table.table(border='1', style='border-collapse: collapse')
-      tr
+    table.table(id='productsTable', border='1', style='border-collapse: collapse')
+      thead
         th(width='100px') Name
         th(width='100px') Price
         th(width='200px') Description

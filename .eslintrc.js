@@ -14,6 +14,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12,
   },
+  ignorePatterns: ['/cypress/**/*.js'],
   rules: {
     'no-unused-vars': 'off',
     'no-self-compare': 'warn',
@@ -23,6 +24,7 @@ module.exports = {
     'arrow-body-style': 'warn',
     'comma-dangle': 'warn',
     'no-unused-expressions': 'warn',
+    'implicit-arrow-linebreak': 'warn',
     'node/no-unpublished-require': 'off',
     'object-curly-newline': 'off',
   },
