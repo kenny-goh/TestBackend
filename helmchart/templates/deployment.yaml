@@ -35,7 +35,7 @@ spec:
             - name: ENVIRONMENT
               value: stage
             - name: DATABASE_URL
-              value: mongodb://root:ABJtTUgVio@my-release-mongodb.default.svc.cluster.local:27017
+              value: mongodb://root:pPz22Px8JB@my-release-mongodb.default.svc.cluster.local:27017
           lifecycle:
             preStop:
               exec:
@@ -43,23 +43,23 @@ spec:
                 {{- range $index, $stopcommand := .Values.container.health.preStopCommand }}
                 - {{ $stopcommand | quote }}
                 {{- end }}
-#          livenessProbe:
-#            httpGet:
-#              path: {{ .Values.container.health.liveness.path }}
-#              port: 8080
-#            initialDelaySeconds: {{ .Values.container.health.liveness.initDelay }}
-#            timeoutSeconds: {{ .Values.container.health.liveness.timeout }}
-#            periodSeconds: {{ .Values.container.health.liveness.period }}
-#            successThreshold: {{ .Values.container.health.liveness.successThreshold }}
-#            failureThreshold: {{ .Values.container.health.liveness.failureThreshold }}
-#          readinessProbe:
-#            httpGet:
-#              path: {{ .Values.container.health.readiness.path }}
-#              port: 8080
-#            initialDelaySeconds: {{ .Values.container.health.readiness.initDelay }}
-#            timeoutSeconds: {{ .Values.container.health.readiness.timeout }}
-#            periodSeconds: {{ .Values.container.health.readiness.period }}
-#            successThreshold: {{ .Values.container.health.readiness.successThreshold }}
-#            failureThreshold: {{ .Values.container.health.readiness.failureThreshold }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.container.health.liveness.path }}
+              port: 3000
+            initialDelaySeconds: {{ .Values.container.health.liveness.initDelay }}
+            timeoutSeconds: {{ .Values.container.health.liveness.timeout }}
+            periodSeconds: {{ .Values.container.health.liveness.period }}
+            successThreshold: {{ .Values.container.health.liveness.successThreshold }}
+            failureThreshold: {{ .Values.container.health.liveness.failureThreshold }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.container.health.readiness.path }}
+              port: 3000
+            initialDelaySeconds: {{ .Values.container.health.readiness.initDelay }}
+            timeoutSeconds: {{ .Values.container.health.readiness.timeout }}
+            periodSeconds: {{ .Values.container.health.readiness.period }}
+            successThreshold: {{ .Values.container.health.readiness.successThreshold }}
+            failureThreshold: {{ .Values.container.health.readiness.failureThreshold }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}

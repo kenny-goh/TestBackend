@@ -7,7 +7,7 @@ block content
             each error in errors
                 li.alert #{error.msg}
 
-    form(action="/products/update" method="post")
+    form(action=`${updateUrl}` method="post")
         input(hidden, type="text", name="id", value=`${product ? product.id : ''}`, id="id")
         table.table
             tr
@@ -28,5 +28,5 @@ block content
             tr
                 td
                     input(type="submit" value="Update" style="margin:5px")
-                    a(href="/products")
+                    a(href=`${listUrl}`)
                         button(type="button") Cancel

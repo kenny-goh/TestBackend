@@ -11,17 +11,15 @@ container:
   imagePullPolicy: Never
   health:
     liveness:
-      enabled: false
-      initDelay: 30
-      path: /test-backend
+      initDelay: 10
+      path: '/'
       timeout: 10
       period: 5
       successThreshold: 1
       failureThreshold: 20
     readiness:
-      enabled: false
-      initDelay: 30
-      path: /test-backend
+      initDelay: 10
+      path: '/'
       timeout: 10
       period: 5
       successThreshold: 1

@@ -1,7 +1,5 @@
 extends layout
 
-
-
 block content
     h3 Products
     table.table(id='productsTable', border='1', style='border-collapse: collapse')
@@ -20,11 +18,11 @@ block content
             table
                 tr
                     td
-                        form(method='POST' action=`/products/edit/${prod.id}?`)
+                        form(method='POST' action=`${editUrl}/${prod.id}`)
                             input.button(type='submit' value='Edit')
                     td
-                        form(method='POST' action=`/products/delete/${prod.id}?`)
+                        form(method='POST' action=`${deleteUrl}/${prod.id}`)
                             input.button(type='submit' value='Delete')
     br
-    a(href="/products/add")
+    a(href=`${addUrl}`)
      button(type="button") Add new product

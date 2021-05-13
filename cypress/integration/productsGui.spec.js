@@ -1,17 +1,22 @@
+const config = require('../../src/config');
+
+const PRODUCT_PATH = config.contextPath + '/products';
+const ADD_PRODUCT_PATH = config.contextPath + '/products/add';
+
 describe('Products GUI test', () => {
   it('As an administrator, I can visits products page', () => {
-    cy.visit('/products');
+    cy.visit(PRODUCT_PATH);
   }),
     it('As an administrator, I can add products via the backend gui', () => {
-      cy.visit('/products');
+      cy.visit(PRODUCT_PATH);
       cy.get('button').click();
-      cy.url().should('contains', '/products/add');
+      cy.url().should('contains', ADD_PRODUCT_PATH);
       cy.get('#name').click();
       cy.get('#name').type('test product 1');
       cy.get('#description').type('test');
       cy.get('#price').type('100');
       cy.get('td:nth-child(1) > input').click();
-      cy.url().should('contains', '/products');
+      cy.url().should('contains', PRODUCT_PATH);
 
       // verify
       const expectedRow = {
@@ -26,7 +31,7 @@ describe('Products GUI test', () => {
         });
     }),
     it('As an administrator, I can edit products via the backend gui', () => {
-      cy.visit('/products');
+      cy.visit(PRODUCT_PATH);
       cy.get('td:nth-child(1) .button').last().click();
       cy.get('#name').click();
       cy.get('#name').clear();
@@ -34,7 +39,7 @@ describe('Products GUI test', () => {
       cy.get('#price').clear();
       cy.get('#price').type('200');
       cy.get('td:nth-child(1) > input').click();
-      cy.url().should('contains', 'products');
+      cy.url().should('contains', PRODUCT_PATH);
 
       // verify
       const expectedRow = {
@@ -49,7 +54,7 @@ describe('Products GUI test', () => {
         });
     }),
     it('As an administrator, I can delete products via the backend gui', () => {
-      cy.visit('/products');
+      cy.visit(PRODUCT_PATH);
       let preLength = 0;
       cy.get('#productsTable')
         .find('tr')

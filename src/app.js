@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes');
 const productsRouter = require('./routes/products');
 const apiRouter = require('./routes/api');
+const config = require('./config');
 
 const app = express();
 
@@ -22,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const options = {
-  basePath: '/management', // It will set /management/info instead of /info
+  basePath: `${config.contextPath}/management`, // It will set /management/info instead of /info
   infoGitMode: 'simple', // the amount of git information you want to expose, 'simple' or 'full',
   customEndpoints: [
     {
@@ -45,9 +46,9 @@ const options = {
 };
 app.use(actuator(options));
 
-app.use('/', indexRouter);
-app.use('/api', apiRouter);
-app.use('/products', productsRouter);
+app.use(`${config.contextPath}/`, indexRouter);
+app.use(`${config.contextPath}/api`, apiRouter);
+app.use(`${config.contextPath}/products`, productsRouter);
 
 // catch 404 and forward to error handler.
 app.use((req, res, next) => {

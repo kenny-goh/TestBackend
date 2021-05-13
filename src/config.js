@@ -1,4 +1,5 @@
 const config = {
+  contextPath: process.env.CONTEXT_PATH || '/test-backend',
   // dev, stage, prod
   environment: process.env.ENVIRONMENT || 'dev',
   db: {

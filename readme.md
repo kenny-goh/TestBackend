@@ -23,3 +23,9 @@ Done
 - dockerfile
 - version (via actuator)
 - health check (via actuator)
+
+---
+
+kubectl port-forward helmchart-test-backend-677f5c59bd-jlfsm 8080:3000
+kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep test-backend
+POD_NAME=`cat temp_pod_name.txt`
