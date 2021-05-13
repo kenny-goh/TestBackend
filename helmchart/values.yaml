@@ -12,14 +12,14 @@ container:
   health:
     liveness:
       initDelay: 10
-      path: '/'
+      path: '/test-backend'
       timeout: 10
       period: 5
       successThreshold: 1
       failureThreshold: 20
     readiness:
       initDelay: 10
-      path: '/'
+      path: '/test-backend'
       timeout: 10
       period: 5
       successThreshold: 1
