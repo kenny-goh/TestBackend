@@ -4,7 +4,7 @@ ingress:
   enabled: true
 
 appVersion: 0.1
-mongoDbUrl: mongodb://root:pPz22Px8JB@my-release-mongodb.default.svc.cluster.local:27017
+mongodbUrl: mongodb://root:pPz22Px8JB@my-release-mongodb.default.svc.cluster.local:27017
 
 container:
   replicaCount: 1
