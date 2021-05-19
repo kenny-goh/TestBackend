@@ -35,7 +35,7 @@ spec:
             - name: ENVIRONMENT
               value: stage
             - name: DATABASE_URL
-              value: mongodb://root:pPz22Px8JB@my-release-mongodb.default.svc.cluster.local:27017
+              value: {{ .Values.mongodbUrl }}
           lifecycle:
             preStop:
               exec:
